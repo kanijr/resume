@@ -5,6 +5,35 @@ const router = express.Router()
 
 // ================================================================
 
+var header = {
+  name: {
+    firstname: 'Ivan',
+    lastname: 'Ivanov',
+  },
+  position: 'Junior Fullstack JS Developer',
+  salary: '600$ в місяць',
+  address: 'Ukraine, Lviv',
+}
+
+var footer = {
+  social: {
+    email: {
+      text: 'ivanov@mail.com',
+      href: 'mailto:ivanov@mail.com',
+    },
+    phone: {
+      text: '+380670000123',
+      href: 'tel:+380670000123',
+    },
+    linkedin: {
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/dmytro-test',
+    },
+  },
+}
+
+// ================================================================
+
 // router.get Створює нам один ентпоїнт
 
 //           ↙ тут вводимо шлях (PATH) до сторінки
@@ -23,6 +52,201 @@ router.get('/summary', function (req, res) {
   //             ↙ cюди вводимо назву файлу з сontainer
   res.render('summary', {
     // ↙ сюди вводимо JSON дані
+    page: {
+      title: 'Resume | Summary',
+    },
+
+    header,
+
+    main: {
+      summary: {
+        title: 'Summary',
+        text: `Open-minded for new technologies, with 1 years of experience in development. Whenever I start to
+        work on a new project I learn the domain and try to understand the idea of the project. Good team
+        player, every colleague is a friend to me.`,
+      },
+      experience: {
+        title: 'Other experience',
+        text: `Pet project for parsing sport betting data from different platforms ( odds ) and sport statistics (
+          tournament position, goals etc), analyzing by simple mathematics models and preparing probability
+          for such events like: money line - first win / draw / second win, totals etc.`,
+      },
+    },
+
+    footer,
+  })
+})
+
+router.get('/skills', function (req, res) {
+  res.render('skills', {
+    // ↙ сюди вводимо JSON дані
+    page: {
+      title: 'Resume | Skills',
+    },
+
+    header,
+
+    main: {
+      skills: [
+        {
+          name: 'HTML',
+          point: 10,
+          isTop: true,
+        },
+        {
+          name: 'Handlebars',
+          point: 10,
+          isTop: true,
+        },
+        {
+          name: 'VS Code',
+          point: 7,
+          isTop: false,
+        },
+        {
+          name: 'Git',
+          point: 9,
+        },
+        {
+          name: 'terminal',
+          point: 8,
+        },
+        {
+          name: 'NPM',
+          point: 9,
+        },
+        {
+          name: 'React.js',
+          point: 0,
+        },
+        {
+          name: 'PHP',
+          point: null,
+        },
+      ],
+      hobbies: [
+        {
+          name: 'Відеоігри ',
+          isMain: true,
+        },
+        {
+          name: 'Гра на гітарі',
+          isMain: false,
+        },
+        {
+          name: 'Колекціонування різних предметів',
+          isMain: true,
+        },
+      ],
+    },
+
+    footer,
+  })
+})
+
+router.get('/education', function (req, res) {
+  res.render('education', {
+    // ↙ сюди вводимо JSON дані
+    page: {
+      title: 'Resume | Education',
+    },
+
+    header,
+
+    main: {
+      educations: [
+        {
+          name: 'Дитячий садок',
+          isEnd: true,
+        },
+        {
+          name: 'Львівська школа №5',
+          isEnd: true,
+        },
+        {
+          name: 'Львівська політехніка',
+          isEnd: false,
+        },
+      ],
+      certificates: [
+        {
+          name: 'Сертифікат закінчення дитсадка',
+          id: 145,
+        },
+        {
+          name: 'Сертифікат закінчення початкової школи',
+          id: 172,
+        },
+        {
+          name: 'Сертифікат закінчення середньої школи',
+          id: 205,
+        },
+      ],
+    },
+
+    footer,
+  })
+})
+
+router.get('/work', function (req, res) {
+  res.render('work', {
+    // ↙ сюди вводимо JSON дані
+
+    layout: 'big',
+
+    page: {
+      title: 'Resume | Work',
+    },
+
+    header,
+
+    main: {
+      works: [
+        {
+          position: 'Junior Fullstack Developer',
+          company: {
+            name: 'IT Brains',
+            url: 'https://it-brains.com.ua/',
+          },
+          duration: {
+            from: '10.10.2022',
+            to: null,
+          },
+          projectAmount: 3,
+
+          projects: [
+            {
+              name: 'Resume',
+              url: 'https://resume.com.ua/',
+              about: 'My resume',
+              stackAmount: 3,
+              stacks: [
+                {
+                  name: 'React.js',
+                },
+                {
+                  name: 'HTML / CSS',
+                },
+                {
+                  name: 'Nodejs',
+                },
+              ],
+              awardsAmount: 2,
+              awards: [
+                {
+                  name: 'Best resume',
+                },
+                {
+                  name: 'Best SEO optimization',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    footer,
   })
 })
 
