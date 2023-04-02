@@ -1,0 +1,90 @@
+{{!--
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+--}}
+
+<div>
+    {{#with web}}
+    <section>
+        {{> title data="languages ​​of web technologies" big=true}}
+        <div>
+            <ul>
+                {{#each languages}}
+                <br>
+                <li>
+                    <div>Name: {{name}}</div>
+                    <div>Version: {{version}}</div>
+                    <div><q>{{description}}</q></div>
+                    <ul>
+                        {{#if elements}}
+                        {{#each elements}}
+                        <br>
+                        <li>
+                            <div>Name: {{name}}</div>
+                            <div><q>{{description}}</q></div>
+                            <ul>
+                                {{#each attributes}}
+                                <br>
+                                <li>
+                                    <div>Name: {{name}}</div>
+                                    <div><q>{{description}}</q></div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                        {{/if}}
+
+                        {{#if properties}}
+                        {{#each properties}}
+                        <br>
+                        <li>
+                            <div>Name: {{name}}</div>
+                            <div><q>{{description}}</q></div>
+                            <ul>
+                                {{#each values}}
+                                <br>
+                                <li>
+                                    <div>Value: {{value}}</div>
+                                    <div><q>{{description}}</q></div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                        {{/if}}
+
+                        {{#if functions}}
+                        {{#each functions}}
+                        <br>
+                        <li>
+                            <div>Name: {{name}}</div>
+                            <div><q>{{description}}</q></div>
+                            <ul>
+                                {{#each parameters}}
+                                <br>
+                                <li>
+                                    <div>Name: {{name}}</div>
+                                    <div>Type: {{type}}</div>
+                                    <div><q>{{description}}</q></div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                        {{/if}}
+                    </ul>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </section>
+    {{/with}}
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в
+
+<body>
+    Адже наш layout/default.hbs має вже структуру HTML
+    --}}
