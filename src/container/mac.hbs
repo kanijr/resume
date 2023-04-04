@@ -1,0 +1,158 @@
+{{!--
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+--}}
+
+<div>
+    <section>
+        {{> title data=name big=true}}
+        <div><span class="badge text-bg-light"><q>{{description}}</q></span></div>
+        <div>Price: <span class="badge text-bg-light">{{price}}</span></div>
+        <div>Category: <span class="badge text-bg-light">{{category}}</span></div>
+        <hr>
+        {{#with features}}
+        <h4>Processor:</h4>
+        {{#with processor}}
+        <div>
+            Brand: <span class="badge text-bg-info">{{brand}}</span>
+            <br>
+            Model: <span class="badge text-bg-info">{{model}}</span>
+            <br>
+            Speed: <span class="badge text-bg-info">{{speed}}</span>
+            <br>
+            Cores: <span class="badge text-bg-info">{{cores}}</span>
+            <br>
+            Cache: <span class="badge text-bg-info">{{cache}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+        <h4>Memory:</h4>
+        {{#with memory}}
+        <div>
+            Type: <span class="badge text-bg-primary">{{type}}</span>
+            <br>
+            Size: <span class="badge text-bg-primary">{{size}}</span>
+            <br>
+            Speed: <span class="badge text-bg-primary">{{speed}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+        <h4>Storage:</h4>
+        {{#with storage}}
+        <div>
+            Type: <span class="badge text-bg-secondary">{{type}}</span>
+            <br>
+            Size: <span class="badge text-bg-secondary">{{size}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+        <h4>Display:</h4>
+        {{#with display}}
+        <div>
+            Size: <span class="badge text-bg-light">{{size}}</span>
+            <br>
+            Resolution: <span class="badge text-bg-light">{{resolution}}</span>
+            <br>
+            Technology: <span class="badge text-bg-light">{{technology}}</span>
+            <br>
+            Color space: <span class="badge text-bg-light">{{color_space}}</span>
+            <br>
+            Brightness: <span class="badge text-bg-light">{{brightness}}</span>
+            <br>
+            Refresh_rate: <span class="badge text-bg-light">{{refresh_rate}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+        <h4>Graphics:</h4>
+        {{#with graphics}}
+        <div>
+            Brand: <span class="badge text-bg-primary">{{brand}}</span>
+            <br>
+            Model: <span class="badge text-bg-primary">{{model}}</span>
+            <br>
+            Memory: <span class="badge text-bg-primary">{{memory}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+        <h4>Ports:</h4>
+        <div>
+            <ul>
+                {{#each ports}}
+                <li>
+                    Type: <span class="badge text-bg-info">{{type}}</span>
+                    <br>
+                    Count: <span class="badge text-bg-info">{{count}}</span>
+                    <br>
+                    {{#if features}}
+                    <h6>Features:</h6>
+                    <ul>
+                        {{#each features}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <br>
+        <h4>Battery:</h4>
+        {{#with battery}}
+        <div>
+            Type: <span class="badge text-bg-light">{{type}}</span>
+            <br>
+            Capacity: <span class="badge text-bg-light">{{capacity}}</span>
+            <br>
+            Life: <span class="badge text-bg-light">{{life}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+
+        <div>Weight: <span class="badge text-bg-primary">{{weight}}</span></div>
+
+        <br>
+        <h4>Dimensions:</h4>
+        {{#with dimensions}}
+        <div>
+            Height: <span class="badge text-bg-secondary">{{height}}</span>
+            <br>
+            Width: <span class="badge text-bg-secondary">{{width}}</span>
+            <br>
+            Depth: <span class="badge text-bg-secondary">{{depth}}</span>
+        </div>
+        {{/with}}
+
+        <br>
+
+        <div>Weight: <span class="badge text-bg-primary">{{operating_system}}</span></div>
+
+        <br>
+        <h4>Accessories:</h4>
+        <div>
+            <ul>
+                {{#each accessories}}
+                <li>
+                    Name: <span class="badge text-bg-primary">{{name}}</span>
+                    <br>
+                    Price: <span class="badge text-bg-primary">{{price}}</span>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/with}}
+    </section>
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в
+
+<body>
+    Адже наш layout/default.hbs має вже структуру HTML
+    --}}
