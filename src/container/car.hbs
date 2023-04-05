@@ -1,0 +1,220 @@
+{{!--
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+--}}
+
+<div>
+    <section>
+        {{> title data='Car description'}}
+        <hr>
+        <br>
+        <div>Made by <span class="badge text-bg-light">{{make}}</span></div>
+        <div>Model: <span class="badge text-bg-light">{{model}}</span></div>
+        <div>Year: <span class="badge text-bg-light">{{year}}</span></div>
+        <div>Color: <span class="badge text-bg-light">{{color}}</span></div>
+        <hr>
+        {{#with features}}
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Interior
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <h5>Seats:</h5>
+                        {{#with interior.seats}}
+                        Material: <span class="badge text-bg-primary">{{material}}</span>
+                        <br>
+                        Color: <span class="badge text-bg-primary">{{color}}</span>
+                        <br>
+                        {{#if heated}}With heating{{/if}}
+                        {{#if ventilated}}With ventilation{{/if}}
+                        {{/with}}
+                        <br>
+                        <hr>
+                        <h5>Dashboard</h5>
+                        {{#with interior.dashboard}}
+                        Material: <span class="badge text-bg-secondary">{{material}}</span>
+                        <br>
+                        Color: <span class="badge text-bg-secondary">{{color}}</span>
+                        <br>
+                        <h6>Display:</h6>
+                        {{#with display}}
+                        Type: <span class="badge text-bg-secondary">{{type}}</span>
+                        <br>
+                        Size: <span class="badge text-bg-secondary">{{size}}</span>
+                        <br>
+                        Resolution: <span class="badge text-bg-secondary">{{resolution}}</span>
+                        <br>
+                        {{#if touchscreen}}With touchscreen{{/if}}
+                        {{/with}}
+                        {{/with}}
+                        <br>
+                        <hr>
+                        {{#with interior.audio}}
+                        System: <span class="badge text-bg-info">{{system}}</span>
+                        <br>
+                        Speakers: <span class="badge text-bg-info">{{speakers}}</span>
+                        <br>
+                        Subwoofer: <span class="badge text-bg-info">{{#if subwoofer}} + {{else}} - {{/if}}</span>
+                        <br>
+                        Bluetooth: <span class="badge text-bg-info">{{#if bluetooth}} + {{else}} - {{/if}}</span>
+                        <br>
+                        USB: <span class="badge text-bg-info">{{#if USB}} + {{else}} - {{/if}}</span>
+
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Exterior
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        {{#with exterior}}
+                        <h6>Wheels</h6>
+                        {{#with wheels}}
+                        Size: <span class="badge text-bg-light">{{size}}</span>
+                        <br>
+                        Type: <span class="badge text-bg-light">{{type}}</span>
+                        <br>
+                        Color: <span class="badge text-bg-light">{{color}}</span>
+                        {{/with}}
+                        <hr>
+                        <h6>Headlights</h6>
+                        {{#with headlights}}
+                        Type: <span class="badge text-bg-secondary">{{type}}</span>
+                        <br>
+                        Brightness: <span class="badge text-bg-secondary">{{brightness}}</span>
+                        <br>
+                        Automatic: <span class="badge text-bg-secondary">{{#if automatic}} + {{else}} -
+                            {{/if}}</span>
+                        {{/with}}
+                        <hr>
+                        <h6>Sunroof</h6>
+                        {{#with sunroof}}
+                        Type: <span class="badge text-bg-primary">{{type}}</span>
+                        <br>
+                        Size: <span class="badge text-bg-primary">{{size}}</span>
+                        <br>
+                        Automatic: <span class="badge text-bg-primary">{{#if automatic}} + {{else}} -{{/if}}</span>
+
+                        {{/with}}
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Safety
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        {{#with safety}}
+                        {{#with airbags}}
+                        Front: <span class="badge text-bg-light">{{front}}</span>
+                        <br>
+                        Side: <span class="badge text-bg-light">{{side}}</span>
+                        <br>
+                        Knee: <span class="badge text-bg-light">{{knee}}</span>
+                        <br>
+                        Front: <span class="badge text-bg-light">{{rear}}</span>
+                        <br>
+                        {{/with}}
+                        <hr>
+                        {{#with assistance}}
+                        Blind spot monitoring: <span class="badge text-bg-info">{{#if blind_spot_monitoring}} +
+                            {{else}} - {{/if}}</span>
+                        <br>
+                        Rear cross traffic alert: <span class="badge text-bg-info">{{#if rear_cross_traffic_alert}}
+                            +
+                            {{else}} - {{/if}}</span>
+                        <br>
+                        lane_departure_warning: <span class="badge text-bg-info">{{#if lane_departure_warning}} +
+                            {{else}} - {{/if}}</span>
+                        <br>
+                        Adaptive cruise control: <span class="badge text-bg-info">{{#if adaptive_cruise_control}} +
+                            {{else}} - {{/if}}</span>
+                        <br>
+                        Collision warning: <span class="badge text-bg-info">{{#if collision_warning}} +
+                            {{else}} - {{/if}}</span>
+                        {{/with}}
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/with}}
+        <hr>
+        <h4>Engine</h4>
+        {{#with engine}}
+        <div>
+            Type: <span class="badge text-bg-light">{{type}}</span>
+            <br>
+            Displacement: <span class="badge text-bg-light">{{displacement}}</span>
+            <br>
+            Horsepower: <span class="badge text-bg-light">{{horsepower}}</span>
+            <br>
+            Torque: <span class="badge text-bg-light">{{torque}}</span>
+            <br>
+            <h6>Transmission</h6>
+            {{#with transmission}}
+            Type: <span class="badge text-bg-light">{{type}}</span>
+            <br>
+            Gears: <span class="badge text-bg-light">{{gears}}</span>
+            {{/with}}
+        </div>
+        {{/with}}
+        <hr>
+        <h4>Fuel economy</h4>
+        {{#with fuel_economy}}
+        <div>
+            City: <span class="badge text-bg-info">{{city}}</span>
+            <br>
+            Highway: <span class="badge text-bg-info">{{highway}}</span>
+            <br>
+            Combined: <span class="badge text-bg-info">{{combined}}</span>
+        </div>
+        {{/with}}
+        <hr>
+        <h4>Price</h4>
+        {{#with price}}
+        <div>
+            Base: <span class="badge text-bg-primary">{{base}}</span>
+            <br>
+            Destination: <span class="badge text-bg-primary">{{destination}}</span>
+            <br>
+            <br>
+            <h6>Options:</h6>
+            {{#with options}}
+            Navigation: <span class="badge text-bg-light">{{navigation}}</span>
+            <br>
+            Moonroof: <span class="badge text-bg-light">{{moonroof}}</span>
+            <br>
+            Premium paint: <span class="badge text-bg-light">{{premium_paint}}</span>
+            {{/with}}
+            Total: <span class="badge text-bg-primary">{{total}}</span>
+        </div>
+        {{/with}}
+    </section>
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в
+
+<body>
+    Адже наш layout/default.hbs має вже структуру HTML
+    --}}
