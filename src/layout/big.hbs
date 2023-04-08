@@ -16,18 +16,17 @@
 		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="p-5">
 
-	{{> nav}}
+	<div class="mb-5">
+		{{> nav}}
+	</div>
 
-	<br>
 	<hr>
 
 	{{! ↓ ця кострукція показує куди шаблонізатору треба вставляти код з container файлу --}}
 	{{{body}}}
 
-	<br>
-	<hr>
 	{{#with footer}}
 	{{> footer}}
 	{{/with}}
