@@ -1,0 +1,11 @@
+<section>
+    <div class="mx-3 my-4">
+        <ol class="breadcrumb">
+            {{#each breadcrumb}}
+            <li class="breadcrumb-item ">
+                <a{{#unless @last}} href="{{url}}" {{/unless}}>{{name}}</a>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</section>
