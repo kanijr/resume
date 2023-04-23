@@ -1,0 +1,132 @@
+<main class="p-5">
+    {{> shopheader}}
+
+    <section class=" mt-5">
+        <div class="row g-2">
+            {{#with formBlock}}
+            <div class="col-8">
+
+                <h1>{{header}}</h1>
+                <div class="mt-3">
+                    {{#with rating}}
+                    {{title}}: {{value}}
+                    {{/with}}
+                </div>
+
+                <div class="mt-3">
+                    {{#with actionBlock}}
+                    <div class="nav nav-tabs row g-0 text-center">
+                        {{#each tabs}}
+                        <div class="col-4">
+                            <div class="nav-item">
+                                {{#if isActive}}
+                                <b><a class=" nav-link active">{{text}}</a></b>
+                                {{else}}
+                                <a class="nav-link">{{text}}</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    <hr class="my-5">
+
+                    <div class="card p-3">
+                        {{#with report}}
+                        {{title}}
+                        <div class="mt-2">
+                            {{#with button}}
+                            <a class="btn py-1 btn-secondary" href="{{link}}">{{text}}</a>
+                            {{/with}}
+                        </div>
+                        {{/with}}
+                    </div>
+                    {{/with}}
+                </div>
+
+                <hr class="my-5">
+
+                <div>
+                    {{#with feedbackBlock}}
+                    <h2>{{title}}</h2>
+                    <div class="mt-5">
+                        {{#each buttons}}
+                        {{#if isWarning}}
+                        <a href="{{link}}" class="btn btn-warning me-2">{{text}}</a>
+                        {{/if}}
+                        {{#if isSuccess}}
+                        <a href="{{link}}" class="btn btn-success me-2">{{text}}</a>
+                        {{/if}}
+                        {{#if isDanger}}
+                        <a href="{{link}}" class="btn btn-danger me-2">{{text}}</a>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    {{/with}}
+                </div>
+
+
+            </div>
+
+
+            <div class="col-4">
+                {{#with goodsInfo}}
+                <div class="card p-3">
+                    <div class="w-75">
+                        <img class="rounded w-75" src="{{photo}}">
+                    </div>
+                    <div class="mt-2">
+                        <b>{{name}}</b>
+                    </div>
+                </div>
+                <div class="card p-3 mt-2">
+                    <b>{{price}}</b>
+                    <p class="text-muted mb-0">
+                        {{#if inMarket}}
+                        <span>Є в наявності</span>
+                        {{else}}
+                        <span class="text-danger">Немає у наявності</span>
+                        {{/if}}
+                    </p>
+                    <div>
+                        {{#each buttons}}
+                        <div class="mt-2">
+                            {{#if isPrimary}}
+                            <a href="{{link}}"
+                                class="btn btn-primary {{#unless ../inMarket}}disabled{{/unless}}">{{text}}</a>
+                            {{/if}}
+                            {{#if isSecondary}}
+                            <a href="{{link}}"
+                                class="btn btn-secondary {{#unless ../inMarket}}disabled{{/unless}}">{{text}}</a>
+                            {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="card p-3 mt-2">
+                    {{#with seller}}
+                    <p class="mb-0">{{title}}: <b>{{value}}</b></p>
+                    {{/with}}
+                </div>
+                {{/with}}
+            </div>
+            {{/with}}
+        </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section>
+        {{#each reviewList}}
+        {{> reviewItem}}
+        {{/each}}
+    </section>
+
+    <hr class="my-5">
+
+    {{> shopaction}}
+
+    <hr class="mt-5 mb-2">
+
+    {{> shopfooter}}
+</main>
