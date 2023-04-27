@@ -1,0 +1,107 @@
+<main class="p-5">
+    {{> shopheader}}
+
+    {{> breadcrumb}}
+
+    <section>
+        <h1>{{header}}</h1>
+        <div class="mt-4 row g-2">
+            {{#each sortBlock}}
+            <div class="col-3">
+                <select class="form-select">
+                    <option selected>{{placeholder}}</option>
+                    {{#each options}}
+                    <option value="{{value}}">{{text}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="my-5 row g-1">
+        <div class="col-4">
+            <div class="card p-2">
+                {{#with filterBlock}}
+                <div>
+                    {{#with sellers}}
+                    <label class="form-label">{{title}}</label>
+                    {{#each list}}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">{{value}}</label>
+                    </div>
+                    {{/each}}
+                    {{/with}}
+                </div>
+
+                <hr class="my-3">
+
+                <div>
+                    {{#with brands}}
+                    <label class="form-label">{{title}}</label>
+                    <input class="form-control form-control-sm mb-2" placeholder="{{input.placeholder}}">
+
+                    {{#each options}}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">{{value}}</label>
+                    </div>
+                    {{/each}}
+                    {{/with}}
+                </div>
+
+                <hr class="my-3">
+
+                <div>
+                    {{#with price}}
+                    <label class="form-label">{{title}}</label>
+
+                    {{#with range}}
+                    <input class="form-control form-control-sm mb-2" placeholder="{{from}}">
+                    <input class="form-control form-control-sm mb-2" placeholder="{{to}}">
+                    {{/with}}
+
+                    {{#with button}}
+                    <a href="{{link}}" class="btn btn-sm btn-outline-secondary">{{text}}</a>
+                    {{/with}}
+
+                    {{/with}}
+                </div>
+
+                <hr class="my-3">
+
+                {{#each filterList}}
+                <div>
+                    <label class="form-label">{{title}}</label>
+                    {{#each options}}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">{{value}}</label>
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{#unless @last}}
+                <hr class="my-3">
+                {{/unless}}
+
+                {{/each}}
+
+                {{/with}}
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="row g-1 gy-3">
+                {{#each goodsList}}
+                {{> catalogItem}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    {{> shopaction}}
+
+    <hr class="mt-5 mb-2">
+
+    {{> shopfooter}}
+</main>
